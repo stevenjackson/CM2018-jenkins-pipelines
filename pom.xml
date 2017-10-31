@@ -27,6 +27,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -56,6 +60,7 @@
                         <source>${project.basedir}/src/main/javascript/resource/*.js</source>
                         <source>${project.basedir}/src/test/javascript/resource/*.js</source>
                     </preloadSources>
+                    <jsSrcDir>${project.basedir}/src/main/resources/static</jsSrcDir>
                 </configuration>
             </plugin>
         </plugins>
