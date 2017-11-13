@@ -31,6 +31,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -78,7 +88,7 @@
                     <includes>
                         <include>**/*.class</include>
                     </includes>
-                    <excludedGroups>util.IntegrationTest</excludedGroups>
+                    <excludedGroups>com.congo.util.IntegrationTest</excludedGroups>
                 </configuration>
             </plugin>
             <plugin>
@@ -93,7 +103,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <groups>util.IntegrationTest</groups>
+                    <groups>com.congo.util.IntegrationTest</groups>
                 </configuration>
                 <executions>
                     <execution>

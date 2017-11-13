@@ -1,4 +1,4 @@
-package home;
+package com.congo.controller;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import util.IntegrationTest;
+import com.congo.util.IntegrationTest;
 
 import java.net.URL;
 
@@ -43,7 +43,5 @@ public class HomeControllerIT {
         assertThat(response.getBody(), containsString("home.css"));
         assertThat(response.getBody(), containsString("home.js"));
         assertThat(response.getBody(), containsString("Home"));
-
-//        assertThat(false, is(true));
     }
 }

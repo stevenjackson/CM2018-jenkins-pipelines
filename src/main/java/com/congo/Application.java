@@ -1,4 +1,4 @@
-package home;
+package com.congo;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

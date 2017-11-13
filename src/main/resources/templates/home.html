@@ -1,8 +1,15 @@
-<script type="text/javascript" th:src="@{javascript/resource/jquery-3.2.1.min.js}"></script>
 <script type="text/javascript" th:src="@{javascript/home/home.js}"></script>
 <link rel="stylesheet" type="text/css" href="../static/styles/home.css" th:href="@{/styles/home.css}" />
-<h1>Home</h1>
+<body class="container">
+    <div th:replace="fragments/header">Header</div>
 
+    <div class="content col-md-12">
+        <h1>Home</h1>
+    </div>
+
+
+    <div th:replace="fragments/footer">Footer</div>
+</body>
 <script>
     $(document).ready(Home.init);
 </script>
