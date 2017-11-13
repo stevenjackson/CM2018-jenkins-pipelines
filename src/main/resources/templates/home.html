@@ -1,10 +1,91 @@
-<script type="text/javascript" th:src="@{javascript/home/home.js}"></script>
-<link rel="stylesheet" type="text/css" href="../static/styles/home.css" th:href="@{/styles/home.css}" />
 <body class="container">
     <div th:replace="fragments/header">Header</div>
 
-    <div class="content col-md-12">
-        <h1>Home</h1>
+    <script type="text/javascript" th:src="@{javascript/home/home.js}"></script>
+    <link rel="stylesheet" type="text/css" href="../static/styles/home.css" th:href="@{/styles/home.css}" />
+    <div class="content row">
+        <div class="col-md-3">
+            <div class="row pane">
+                <div class="col-md-2">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-10">
+                    Welcome, Robert
+                    <div class="small">Customer Since 2011</div>
+                </div>
+            </div>
+
+            <div class="row pane categories">
+                <div class="col-md-12">
+                    Top Categories for you
+                </div>
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">Books</li>
+                        <li class="list-group-item">Toys &amp; Games</li>
+                        <li class="list-group-item">Electronics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="row pane">
+                <div class="col-md-12">
+                    Browsing History:
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 relatedProducts">
+            <div class="row pane">
+                <div class="col-md-12">
+                    Related to items you've viewed <a href="#" class="small">See more</a>
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 trendingProducts">
+            <div class="row pane">
+                <div class="col-md-12">
+                    Trending Deals <a href="#" class="small">See all deals</a>
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+                <div class="col-md-3 product">
+                    product
+                </div>
+            </div>
+        </div>
     </div>
 
 

@@ -41,3 +41,7 @@
 .dropdown-menu .dropdown-divider {
     border-color: #828081;
 }
+
+.list-group-item {
+    border-color: #1E392A;
+}
