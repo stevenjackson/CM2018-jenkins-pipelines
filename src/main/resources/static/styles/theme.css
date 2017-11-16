@@ -1,3 +1,7 @@
+img {
+    max-width: 100%;
+}
+
 .header, .footer, body {
     background-color: #1E392A;
 }

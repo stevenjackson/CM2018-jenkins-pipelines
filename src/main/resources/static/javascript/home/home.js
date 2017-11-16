@@ -50,7 +50,7 @@ var Home = (function(){
   function renderProduct($target, productData){
     $target.append("<div class='col-md-3 product' data-id='" + productData.id + "'>" +
     "<span class='name'>" + productData.name + "</span>" +
-    "<img src='" + productData.imageUrl +"' />" +
+    "<img src='/images/" + productData.imageUrl +"' />" +
     "</div>");
   }
 

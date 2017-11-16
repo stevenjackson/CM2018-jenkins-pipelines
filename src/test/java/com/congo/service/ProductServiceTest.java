@@ -23,6 +23,7 @@ public class ProductServiceTest {
                 1,
                 RandomStringUtils.randomAlphanumeric(10),
                 RandomStringUtils.randomAlphanumeric(10),
+                RandomStringUtils.randomAlphanumeric(10),
                 RandomStringUtils.randomAlphanumeric(10));
         mockedProducts.put(1, myProduct);
         service = new ProductService();
