@@ -19,6 +19,7 @@ public class HomeController {
     @RequestMapping("/")
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("home");
+        mav.addObject("userId", 1);
         return mav;
     }
 }

@@ -55,7 +55,9 @@
 
     <div th:replace="fragments/footer">Footer</div>
 </body>
-<script>
-    $(document).ready(Home.init);
+<script type="text/javascript" th:inline="javascript">
+    $(document).ready(function(){
+      Home.init([[${userId}]]);
+    });
 </script>
 
