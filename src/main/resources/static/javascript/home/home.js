@@ -2,9 +2,17 @@ var Home = (function(){
   var current = this;
   function init(userId){
     current.userId = userId;
+    $(document).on("click", ".product", function(){
+      var productId = $(this).data('id');
+      getProduct(productId);
+    })
     loadProductHistory();
     loadRelatedProducts();
     loadTrendingProducts();
+  }
+
+  function getProduct(productId){
+
   }
 
   function loadProductHistory(){

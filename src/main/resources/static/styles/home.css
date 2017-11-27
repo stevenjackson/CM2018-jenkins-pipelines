@@ -25,6 +25,15 @@
 }
 
 .product {
+    cursor: pointer;
+}
+
+.product:hover {
+    background-color: #1E392A;
+}
+
+.product:hover span {
+    color: #3CC47C;
 }
 
 .relatedProducts .small, .trendingProducts .small {
