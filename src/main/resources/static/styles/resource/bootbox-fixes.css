@@ -1,0 +1,9 @@
+/*
+    Fix for bootbox.js until bootstrap 4 is out of alpha and library is updated.
+*/
+.bootbox .modal-header h4 {
+    order: 0;
+}
+.bootbox .modal-header button {
+    order: 1;
+}

@@ -49,3 +49,13 @@ img {
 .list-group-item {
     border-color: #1E392A;
 }
+
+.modal-header {
+    background-color: #1E392A;
+    color: #3CC47C;
+}
+
+.modal-header .bootbox-close-button {
+    color: #E9C893;
+    opacity: 1.0;
+}

@@ -190,4 +190,63 @@ describe("Home", function(){
       expect(successCalled).toBe(true);
     });
   });
+
+  describe("selecting a product", function(){
+    var product = {
+        id: 1,
+        name: "product1",
+        description: "description1",
+        price: "$3.50",
+        url: "product1url",
+        imageUrl: "product1ImageUrl"
+      };
+
+    it("retrieves product details", function(){
+      var invoked = false;
+      spyOn($, "ajax").and.callFake(function(request){
+        if(request.url.indexOf("History") != -1) {
+          request.success([ product ]);
+          $(".product[data-id='1']").click();
+        }
+
+        if(request.url == "/product"){
+          invoked = true;
+          expect(request.data).toEqual({id: 1});
+        }
+      });
+
+      Home.init(1);
+
+      expect($.ajax).toHaveBeenCalled();
+      expect(invoked).toBe(true);
+    });
+
+    it("renders the product details in a modal when product is clicked", function(){
+      var invoked = false;
+      spyOn(bootbox, "dialog").and.callFake(function(options){
+        invoked = true;
+        expect(options.title).toBe(product.name);
+        expect(options.size).toBe("large");
+        expect(options.message.indexOf(product.price)).not.toBe(-1);
+        expect(options.message.indexOf(product.description)).not.toBe(-1);
+        expect(options.message.indexOf(product.imageUrl)).not.toBe(-1);
+        expect(options.message.indexOf(product.url)).not.toBe(-1);
+      });
+
+      spyOn($, "ajax").and.callFake(function(request){
+        if(request.url.indexOf("History") != -1) {
+          request.success([ product ]);
+          $(".product[data-id='1']").click();
+        }
+        if(request.url == "/product"){
+          request.success(product);
+        }
+      });
+
+      Home.init(1);
+
+      expect($.ajax).toHaveBeenCalled();
+      expect(invoked).toBe(true);
+    });
+  });
 });
