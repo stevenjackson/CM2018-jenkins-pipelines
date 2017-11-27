@@ -2,17 +2,17 @@ var Home = (function(){
   var current = this;
   function init(userId){
     current.userId = userId;
-    $(document).on("click", ".product", function(){
-      var productId = $(this).data('id');
-      getProduct(productId);
-    })
     loadProductHistory();
     loadRelatedProducts();
     loadTrendingProducts();
   }
 
   function getProduct(productId){
-
+    $.ajax({
+      url: "/product",
+      data: {id: productId},
+      success: renderProductModal
+    });
   }
 
   function loadProductHistory(){
@@ -56,10 +56,15 @@ var Home = (function(){
   }
 
   function renderProduct($target, productData){
-    $target.append("<div class='col-md-3 product' data-id='" + productData.id + "'>" +
-    "<span class='name'>" + productData.name + "</span>" +
-    "<img src='/images/" + productData.imageUrl +"' />" +
-    "</div>");
+    var $product = $("<div class='col-md-3 product' data-id='" + productData.id + "'>" +
+      "<span class='name'>" + productData.name + "</span>" +
+      "<img src='/images/" + productData.imageUrl +"' />" +
+      "</div>")
+    $target.append($product);
+    $product.on("click", function(){
+      var productId = $(this).data('id');
+      getProduct(productId);
+    });
   }
 
   return {
