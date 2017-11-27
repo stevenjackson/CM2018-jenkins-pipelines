@@ -44,7 +44,7 @@ describe("Home", function(){
           var $product = $(".productHistory .product");
           expect($product.data("id")).toBe(product.id);
           expect($product.find(".name").html()).toBe(product.name);
-          expect($product.find("img").attr("src")).toBe(product.imageUrl);
+          expect($product.find("img").attr("src")).toBe("/images/" + product.imageUrl);
         }
       });
 
@@ -104,7 +104,7 @@ describe("Home", function(){
           var $product = $(".relatedProducts .product");
           expect($product.data("id")).toBe(product.id);
           expect($product.find(".name").html()).toBe(product.name);
-          expect($product.find("img").attr("src")).toBe(product.imageUrl);
+          expect($product.find("img").attr("src")).toBe("/images/" + product.imageUrl);
         }
       });
 
@@ -164,7 +164,7 @@ describe("Home", function(){
           var $product = $(".trendingProducts .product");
           expect($product.data("id")).toBe(product.id);
           expect($product.find(".name").html()).toBe(product.name);
-          expect($product.find("img").attr("src")).toBe(product.imageUrl);
+          expect($product.find("img").attr("src")).toBe("/images/" + product.imageUrl);
         }
       });
 
