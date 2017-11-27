@@ -27,6 +27,22 @@ public class ProductControllerTest {
     ProductService productService;
 
     @Test
+    public void getProductReturnsProduct(){
+        Integer productId = 3;
+        Product product = new Product(3, "b", "c", "d", "e");
+
+        new NonStrictExpectations(){
+            {
+                productService.getProduct(productId);
+                returns(product);
+            }
+        };
+
+        Product actualProduct = productController.getProduct(productId);
+        assertThat(actualProduct, equalTo(product));
+    }
+
+    @Test
     public void productHistoryReturnsAListOfProductsFromTheProductService(){
         Integer userId = 25;
         List<Product> products = new ArrayList<Product>();

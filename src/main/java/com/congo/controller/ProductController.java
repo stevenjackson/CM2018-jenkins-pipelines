@@ -14,6 +14,11 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @GetMapping("/product")
+    public Product getProduct(Integer id){
+        return productService.getProduct(id);
+    }
+
     @GetMapping("/productHistory")
     public List<Product> productHistory(Integer userId) {
         return productService.productHistory(userId);
