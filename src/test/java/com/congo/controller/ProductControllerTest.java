@@ -29,7 +29,7 @@ public class ProductControllerTest {
     @Test
     public void getProductReturnsProduct(){
         Integer productId = 3;
-        Product product = new Product(3, "b", "c", "d", "e");
+        Product product = new Product(3, "b", "c", "d", "e", "f");
 
         new NonStrictExpectations(){
             {
@@ -46,7 +46,7 @@ public class ProductControllerTest {
     public void productHistoryReturnsAListOfProductsFromTheProductService(){
         Integer userId = 25;
         List<Product> products = new ArrayList<Product>();
-        Product product = new Product(1, "b", "c", "d", "e");
+        Product product = new Product(1, "b", "c", "d", "e", "f");
         products.add(product);
 
         new NonStrictExpectations(){
@@ -66,7 +66,7 @@ public class ProductControllerTest {
     public void relatedProductsReturnsAListOfProductsFromTheProductService(){
         Integer userId = 25;
         List<Product> products = new ArrayList<Product>();
-        Product product = new Product(1, "b", "c", "d", "e");
+        Product product = new Product(1, "b", "c", "d", "e", "f");
         products.add(product);
 
         new NonStrictExpectations(){
@@ -84,7 +84,7 @@ public class ProductControllerTest {
     @Test
     public void trendingProductsReturnsAListOfProductsFromTheProductService(){
         List<Product> products = new ArrayList<Product>();
-        Product product = new Product(1, "b", "c", "d", "e");
+        Product product = new Product(1, "b", "c", "d", "e", "f");
         products.add(product);
 
         new NonStrictExpectations(){

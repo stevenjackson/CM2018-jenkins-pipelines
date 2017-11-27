@@ -3,15 +3,17 @@ package com.congo.domain;
 public class Product {
     private Integer id;
     private String name;
+    private String description;
     private String price;
     private String url;
     private String imageUrl;
 
     public Product(){}
 
-    public Product(Integer id, String name, String price, String url, String imageUrl){
+    public Product(Integer id, String name, String description, String price, String url, String imageUrl){
         this.id = id;
         this.name = name;
+        this.description = description;
         this.price = price;
         this.url = url;
         this.imageUrl = imageUrl;
@@ -23,6 +25,14 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
