@@ -8,11 +8,7 @@ var Home = (function(){
   }
 
   function getProduct(productId){
-    $.ajax({
-      url: "/product",
-      data: {id: productId},
-      success: renderProductModal
-    });
+
   }
 
   function loadProductHistory(){
