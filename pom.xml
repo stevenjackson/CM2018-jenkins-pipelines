@@ -75,7 +75,7 @@
                     <preloadSources>
                         <source>${project.basedir}/src/main/resources/static/javascript/resource/jquery-3.2.1.min.js</source>
                         <source>${project.basedir}/src/test/javascript/resource/jasmine-fixture.min.js</source>
-                        <source>${project.basedir}/src/test/javascript/resource/jasmine-jquery.min.js</source>
+                        <source>${project.basedir}/src/test/javascript/resource/jasmine-jquery.js</source>
                     </preloadSources>
                     <jsSrcDir>${project.basedir}/src/main/resources/static</jsSrcDir>
                 </configuration>
