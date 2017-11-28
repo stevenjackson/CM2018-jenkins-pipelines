@@ -8,7 +8,7 @@ var Home = (function(){
   }
 
   function getProduct(productId){
-
+    CongoUtils.goToUrl("/product/" + productId);
   }
 
   function loadProductHistory(){

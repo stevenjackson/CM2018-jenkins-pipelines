@@ -190,4 +190,34 @@ describe("Home", function(){
       expect(successCalled).toBe(true);
     });
   });
+
+  describe("selecting a product", function(){
+    it("takes the user to the product page", function(){
+      var product = {
+        id: 1,
+        name: "product1",
+        description: "description1",
+        price: "$3.50",
+        url: "product1url",
+        imageUrl: "product1ImageUrl"
+      };
+
+      spyOn(CongoUtils, "goToUrl").and.callFake(function(url){});
+
+      spyOn($, "ajax").and.callFake(function(request){
+        if(request.url.indexOf("History") != -1) {
+          request.success([ product ]);
+          $(".product[data-id='1']").click();
+        }
+        if(request.url == "/product"){
+          request.success(product);
+        }
+      });
+
+      Home.init(1);
+
+      expect($.ajax).toHaveBeenCalled();
+      expect(CongoUtils.goToUrl).toHaveBeenCalledWith("/product/" + product.id);
+    });
+  });
 });
