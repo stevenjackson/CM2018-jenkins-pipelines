@@ -13,6 +13,7 @@ var Home = (function(){
       data: {id: productId},
       success: renderProductModal
     });
+    CongoUtils.goToUrl("/product/" + productId);
   }
 
   function loadProductHistory(){
