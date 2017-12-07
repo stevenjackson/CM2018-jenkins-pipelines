@@ -1,9 +1,11 @@
 describe("Home", function(){
-
+  var flagOn;
   beforeEach(function(){
     affix(".productHistory");
     affix(".relatedProducts");
     affix(".trendingProducts");
+    flagOn = false;
+    spyOn(CongoUtils, "goToUrl").and.callFake(function(url){});
   });
 
   it("is defined", function(){
@@ -22,7 +24,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect($.ajax).toHaveBeenCalled();
       expect(invoked).toBe(true);
@@ -48,7 +50,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect(successCalled).toBe(true);
     });
@@ -65,7 +67,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect(successCalled).toBe(true);
     });
@@ -82,7 +84,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect($.ajax).toHaveBeenCalled();
       expect(invoked).toBe(true);
@@ -108,7 +110,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect(successCalled).toBe(true);
     });
@@ -125,7 +127,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect(successCalled).toBe(true);
     });
@@ -142,7 +144,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect($.ajax).toHaveBeenCalled();
       expect(invoked).toBe(true);
@@ -168,7 +170,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect(successCalled).toBe(true);
     });
@@ -185,13 +187,16 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect(successCalled).toBe(true);
     });
   });
 
   describe("selecting a product for flag off", function(){
+    beforeEach(function(){
+      flagOn = false;
+    })
     var product = {
         id: 1,
         name: "product1",
@@ -215,7 +220,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect($.ajax).toHaveBeenCalled();
       expect(invoked).toBe(true);
@@ -243,7 +248,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect($.ajax).toHaveBeenCalled();
       expect(invoked).toBe(true);
@@ -251,6 +256,9 @@ describe("Home", function(){
   });
 
   describe("selecting a product for flag on", function(){
+    beforeEach(function(){
+      flagOn = true;
+    })
     it("takes the user to the product page", function(){
       var product = {
         id: 1,
@@ -260,8 +268,6 @@ describe("Home", function(){
         url: "product1url",
         imageUrl: "product1ImageUrl"
       };
-
-      spyOn(CongoUtils, "goToUrl").and.callFake(function(url){});
 
       spyOn($, "ajax").and.callFake(function(request){
         if(request.url.indexOf("History") != -1) {
@@ -273,7 +279,7 @@ describe("Home", function(){
         }
       });
 
-      Home.init(1);
+      Home.init(1, flagOn);
 
       expect($.ajax).toHaveBeenCalled();
       expect(CongoUtils.goToUrl).toHaveBeenCalledWith("/product/" + product.id);

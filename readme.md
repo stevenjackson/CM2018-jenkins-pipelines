@@ -46,6 +46,16 @@ Launch application
 mvn package && java -jar target/cdd-workshop-app-0.1.0.jar
 ```
 
+On a spefic port use
+ 
+ ```
+-Dserver.port=8090 
+```
+
+To turn on the feature flag edit the application.properties file or add this argument on start up
+```
+-DflagOn=true
+```
 Health Check
 
 ```

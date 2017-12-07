@@ -1,19 +1,23 @@
 var Home = (function(){
   var current = this;
-  function init(userId){
+  function init(userId, flagOn){
     current.userId = userId;
+    current.flagOn = flagOn;
     loadProductHistory();
     loadRelatedProducts();
     loadTrendingProducts();
   }
 
   function getProduct(productId){
-    $.ajax({
-      url: "/product",
-      data: {id: productId},
-      success: renderProductModal
-    });
-    CongoUtils.goToUrl("/product/" + productId);
+    if(current.flagOn){
+      CongoUtils.goToUrl("/product/" + productId);
+    } else {
+      $.ajax({
+        url: "/product",
+        data: {id: productId},
+        success: renderProductModal
+      });
+    }
   }
 
   function loadProductHistory(){
