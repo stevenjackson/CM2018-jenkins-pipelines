@@ -8,7 +8,11 @@ var Home = (function(){
   }
 
   function getProduct(productId){
-
+    $.ajax({
+      url: "/product",
+      data: {id: productId},
+      success: renderProductModal
+    });
   }
 
   function loadProductHistory(){
@@ -39,6 +43,23 @@ var Home = (function(){
         renderProducts($(".trendingProducts"), "No Products Trending", data);
       }
     })
+  }
+
+  function renderProductModal(productData){
+    var message = "<div class='row'>";
+      message += "<div class='col-md-3'><img src='images/" + productData.imageUrl +"' /></div>";
+      message += "<div class='col-md-9'>";
+        message += "<div><b>Price:</b> " + productData.price +"<button class='btn btn-outline-success checkout'><i class='fa fa-shopping-cart'></i></button></div>"
+
+        message += "<div><b>Description:</b> " + productData.description + "</div>";
+        message += "<div><a href='" + productData.url + "' target='_' class='btn btn-block'>Full Product Details</a></div>";
+      message += "</div>";
+    message += "</div>";
+    bootbox.dialog({
+      title: productData.name,
+      size: "large",
+      message: message
+    });
   }
 
   function renderProducts($target, noneFoundMessage, products){
