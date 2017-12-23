@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
-            <version>1.11</version>
+            <version>1.24</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -64,7 +64,7 @@
                 <groupId>com.github.searls</groupId>
                 <artifactId>jasmine-maven-plugin</artifactId>
                 <version>2.2</version>
-                <executions>
+<executions>
                     <execution>
                         <goals>
                             <goal>test</goal>
@@ -72,6 +72,14 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <phantomjs>
+                        <version>2.1.1</version>
+                        <checkSystemPath>true</checkSystemPath>
+                        <enforceVersion>true</enforceVersion>
+                        <source>REPOSITORY</source>
+                        <baseUrl/>
+                        <outputDirectory>target/phantomjs</outputDirectory>
+                    </phantomjs>
                     <preloadSources>
                         <source>${project.basedir}/src/main/resources/static/javascript/resource/jquery-3.2.1.min.js</source>
                         <source>${project.basedir}/src/test/javascript/resource/jasmine-fixture.min.js</source>
