@@ -15,7 +15,6 @@ import com.congo.util.IntegrationTest;
 import java.net.URL;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 @Category(IntegrationTest.class)

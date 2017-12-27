@@ -7,6 +7,7 @@ This project is a niave application used to demonstrate how to set up a continuo
 - Java 8
 - Maven (3.1 or higher)
 - Node
+- chromedriver
 
 
 # Build Commands
