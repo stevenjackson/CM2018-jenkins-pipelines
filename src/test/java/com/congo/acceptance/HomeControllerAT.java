@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -20,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = "server.port=8091", webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class HomeControllerAT {
@@ -36,7 +36,9 @@ public class HomeControllerAT {
     @Before
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-gpu", "--no-sandbox");
+        driver = new ChromeDriver(options);
         driver.get(baseUrl);
         homePage = PageFactory.initElements(driver, HomePage.class);
     }
