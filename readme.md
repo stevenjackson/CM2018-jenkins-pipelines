@@ -6,9 +6,6 @@ This project is a niave application used to demonstrate how to set up a continuo
 
 - Java 8
 - Maven (3.1 or higher)
-- Node
-- chromedriver
-
 
 # Build Commands
 
@@ -50,7 +47,7 @@ mvn package && java -jar target/cdd-workshop-app-0.1.0.jar
 On a spefic port use
  
  ```
--Dserver.port=8090 
+java -jar target/cdd-workshop-app-0.1.0.jar --server.port=8090 
 ```
 
 To turn on the feature flag edit the application.properties file or add this argument on start up
