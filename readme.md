@@ -38,6 +38,10 @@ Execute integration tests
 mvn failsafe:integration-test
 ```
 
+Execute acceptance tests
+
+checkout the https://github.com/r-cochran/cdd-workshop-acceptance-tests project and follow it's instructions
+
 Launch application
 
 ```
