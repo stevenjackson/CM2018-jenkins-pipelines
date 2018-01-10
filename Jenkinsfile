@@ -21,8 +21,8 @@ pipeline {
     stage('Test') {
       steps {
         configFileProvider([
-          configFile(fileId: 'maven-settings', // matches the fileId in jenkins
-                     variable: 'MAVEN_SETTINGS')//assign path to this var
+          configFile(fileId: 'maven-settings',
+                     variable: 'MAVEN_SETTINGS')
         ]) {
           sh 'mvn -B -s $MAVEN_SETTINGS test'
           sh 'mvn -B -s $MAVEN_SETTINGS failsafe:integration-test'
@@ -33,6 +33,18 @@ pipeline {
     stage('Deploy to test with healthcheck') {
       steps {
         sh 'ci/deploy.sh test 8091'
+      }
+    }
+
+    stage('Acceptance test') {
+      steps {
+        sh 'ci/checkoutAcceptanceTests.sh'
+        configFileProvider([
+          configFile(fileId: 'maven-settings',
+                     variable: 'MAVEN_SETTINGS')
+        ]) {
+          sh 'mvn -B -s $MAVEN_SETTINGS clean install -Dport=8091'
+        }
       }
     }
 
