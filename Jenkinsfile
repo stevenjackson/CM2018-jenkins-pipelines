@@ -38,7 +38,6 @@ pipeline {
           'acceptance': {
             sh 'ci/deploy.sh test 8091'
             sh 'ci/checkoutAcceptanceTests.sh'
-            sh 'cd ../acceptance-tests'
             configFileProvider([
               configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS')
             ]) {
@@ -64,6 +63,13 @@ pipeline {
         ]) {
           sh 'mvn -B -s $MAVEN_SETTINGS deploy -DskipTests'
         }
+      }
+    }
+
+    stage('Deploy to production') {
+      steps {
+        sh 'ci/deploy.sh prod/blue 10001'
+        sh 'ci/deploy.sh prod/green 10002'
       }
     }
   }
