@@ -20,31 +20,32 @@ pipeline {
 
     stage('Test') {
       steps {
-        configFileProvider([
-          configFile(fileId: 'maven-settings',
-                     variable: 'MAVEN_SETTINGS')
-        ]) {
-          sh 'mvn -B -s $MAVEN_SETTINGS test'
-          sh 'mvn -B -s $MAVEN_SETTINGS failsafe:integration-test'
-        }
-      }
-    }
-
-    stage('Deploy to test with healthcheck') {
-      steps {
-        sh 'ci/deploy.sh test 8091'
-      }
-    }
-
-    stage('Acceptance test') {
-      steps {
-        sh 'ci/checkoutAcceptanceTests.sh'
-        configFileProvider([
-          configFile(fileId: 'maven-settings',
-                     variable: 'MAVEN_SETTINGS')
-        ]) {
-          sh 'mvn -B -s $MAVEN_SETTINGS clean install -Dport=8091'
-        }
+        parallel(
+          'unit': {
+            configFileProvider([
+              configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS')
+            ]) {
+              sh 'mvn -B -s $MAVEN_SETTINGS test'
+            }
+          },
+          'integration': {
+            configFileProvider([
+              configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS')
+            ]) {
+              sh 'mvn -B -s $MAVEN_SETTINGS failsafe:integration-test'
+            }
+          },
+          'acceptance': {
+            sh 'ci/deploy.sh test 8091'
+            sh 'ci/checkoutAcceptanceTests.sh'
+            sh 'cd ../acceptance-tests'
+            configFileProvider([
+              configFile(fileId: 'maven-settings', variable: 'MAVEN_SETTINGS')
+            ]) {
+              sh 'mvn -B -s $MAVEN_SETTINGS clean install -Dport=8091'
+            }
+          }
+        )
       }
     }
 
