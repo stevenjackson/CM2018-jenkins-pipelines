@@ -15,7 +15,6 @@ pipeline {
           sh 'ci/incrementPomVersion.sh $MAVEN_SETTINGS'
           sh 'mvn -B -s $MAVEN_SETTINGS clean package -DskipTests'
         }
-        archiveArtifacts artifacts: '**/target/*.jar'
       }
     }
 
@@ -23,6 +22,17 @@ pipeline {
       steps {
         sh 'ci/commitPomVersion.sh'
         sh 'ci/tag.sh'
+      }
+    }
+
+    stage('Push artifacts') {
+      steps {
+        configFileProvider([
+          configFile(fileId: 'maven-settings', // matches the fileId in jenkins
+                     variable: 'MAVEN_SETTINGS')//assign path to this var
+        ]) {
+          sh 'mvn -B -s $MAVEN_SETTINGS deploy -DskipTests'
+        }
       }
     }
   }
