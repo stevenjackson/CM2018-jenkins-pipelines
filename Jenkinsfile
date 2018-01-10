@@ -18,6 +18,18 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        configFileProvider([
+          configFile(fileId: 'maven-settings', // matches the fileId in jenkins
+                     variable: 'MAVEN_SETTINGS')//assign path to this var
+        ]) {
+          sh 'mvn -B -s $MAVEN_SETTINGS test'
+          sh 'mvn -B -s $MAVEN_SETTINGS failsafe:integration-test'
+        }
+      }
+    }
+
     stage('Tag') {
       steps {
         sh 'ci/commitPomVersion.sh'
