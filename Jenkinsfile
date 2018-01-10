@@ -30,6 +30,12 @@ pipeline {
       }
     }
 
+    stage('Deploy to test with healthcheck') {
+      steps {
+        sh 'ci/deploy.sh test 8091'
+      }
+    }
+
     stage('Tag') {
       steps {
         sh 'ci/commitPomVersion.sh'
